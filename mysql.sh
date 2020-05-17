@@ -19,3 +19,8 @@ docker run -p 13306:3306 --name mysql-5.7   \
 -v mysql-log:/var/log/ \
 -v mysql-data:/var/lib/mysql \
 -v /etc/localtime:/etc/localtime:ro -e MYSQL_ROOT_PASSWORD=123456 -u root -d mysql:5.7
+
+
+#进入容器 配置允许远程连接
+mysql -u root -p 123456
+grant all privileges on *.*  to ‘root’@’%’ ; 
