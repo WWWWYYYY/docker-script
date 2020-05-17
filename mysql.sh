@@ -1,7 +1,5 @@
 #mysql
 mkdir -p /docker_data/mysql/conf
-mkdir -p /docker_data/mysql/log
-mkdir -p /docker_data/mysql/data
 cat <<EOF > /docker_data/mysql/conf/my.cnf
 [mysqld]
 datadir=/var/lib/mysql
@@ -15,4 +13,9 @@ skip-name-resolve
 pid-file=/var/run/mysqld/mysqld.pid
 server-id=1
 EOF
-docker run -p 3306:3306 --name mysql-5.7 -v /docker_data/mysql/conf:/etc/mysql -v /docker_data/mysql/log:/var/log/ -v /docker_data/mysql/data:/var/lib/mysql -v /etc/localtime:/etc/localtime:ro -e MYSQL_ROOT_PASSWORD=123456 -u root -d mysql:5.7
+
+docker run -p 13306:3306 --name mysql-5.7   \
+-v /docker_data/mysql/conf:/etc/mysql \
+-v mysql-log:/var/log/ \
+-v mysql-data:/var/lib/mysql \
+-v /etc/localtime:/etc/localtime:ro -e MYSQL_ROOT_PASSWORD=123456 -u root -d mysql:5.7
