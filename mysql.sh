@@ -23,4 +23,4 @@ docker run -p 13306:3306 --name mysql-5.7   \
 
 #进入容器 配置允许远程连接
 mysql -u root -p 123456
-grant all privileges on *.*  to ‘root’@’%’ ; 
+grant all privileges on *.*  to 'root'@'%' ; 
