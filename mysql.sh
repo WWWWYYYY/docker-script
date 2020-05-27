@@ -24,3 +24,9 @@ docker run -p 13306:3306 --name mysql-5.7   \
 #进入容器 配置允许远程连接
 mysql -u root -p 123456
 grant all privileges on *.*  to 'root'@'%' ; 
+
+
+q:
+Could not open file '/var/log/mysqld.log' for error logging: Permission denied
+a:
+修改挂载日志目录的权限为0777（自己用无所谓权限多大）
