@@ -2,11 +2,12 @@
 mkdir -p /docker_data/mysql/conf
 cat <<EOF > /docker_data/mysql/conf/my.cnf
 [mysqld]
-datadir=/var/lib/mysql
-socket=/var/lib/mysql/mysql.sock
+#datadir=/var/lib/mysql
+#log-error  = /var/log/mysql/error.log
+#pid-file    = /var/run/mysqld/mysqld.pid
+#socket      = /var/run/mysqld/mysqld.sock
 lower_case_table_names =1
 symbolic-links=0
-log-error=/var/log/mysqld.log
 character_set_server=utf8mb4
 max_connections = 1024
 skip-name-resolve
@@ -25,8 +26,3 @@ docker run -p 13306:3306 --name mysql-5.7   \
 mysql -u root -p 123456
 grant all privileges on *.*  to 'root'@'%' ; 
 
-
-q:
-Could not open file '/var/log/mysqld.log' for error logging: Permission denied
-a:
-修改挂载日志目录的权限为0777（自己用无所谓权限多大）
