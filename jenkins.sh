@@ -18,3 +18,6 @@ docker run --name jenkins -d -p 8080:8080 \
  /usr/lib64/libltdl.so.7
  然后在docker run 命令上添加以下参数
 -v /usr/lib64/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
+
+如果jenkins中需要用到ssh或者scp命令的话可以挂载宿主机的ssh信息，前提是宿主机已经和远程主机做了免密。
+ -v /root/.ssh:/root/.ssh 
